@@ -4,6 +4,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -28,4 +30,10 @@ public class TradeRepositoryImpl implements TradeRepository {
 
         return allTrades;
     }
+
+    @Override
+    public Trade save(String ticker, TransType transType, Date eventDate, Long units, BigDecimal price) {
+        return null;
+    }
+
 }
