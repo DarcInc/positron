@@ -8,11 +8,11 @@ import java.sql.SQLException;
 public class PositionRowMapper implements RowMapper<Position> {
     @Override
     public Position mapRow(ResultSet rs, int rowNum) throws SQLException {
-        Position result = new Position();
-
-        result.setTicker(rs.getString("ticker"));
-        result.setQuantity(rs.getLong("total_units"));
-        result.setBasis(rs.getBigDecimal("total_basis"));
+        Position result = new Position(
+                rs.getString("ticker"),
+                rs.getLong("total_units"),
+                rs.getBigDecimal("total_basis")
+        );
 
         return result;
     }

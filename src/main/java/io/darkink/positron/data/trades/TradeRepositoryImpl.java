@@ -18,9 +18,8 @@ public class TradeRepositoryImpl implements TradeRepository {
             "FROM trades " +
             "ORDER BY ticker, event_date";
 
-    public TradeRepositoryImpl(DataSource dataSource) {
-        this.dataSource = dataSource;
-        jdbcTemplate = new JdbcTemplate(dataSource);
+    public TradeRepositoryImpl(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
         tradeRowMapper = new TradeRowMapper();
     }
 

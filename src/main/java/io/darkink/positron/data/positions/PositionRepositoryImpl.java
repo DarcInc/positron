@@ -8,17 +8,15 @@ import java.util.List;
 
 @Repository
 public class PositionRepositoryImpl implements PositionRepository {
-    private DataSource dataSource;
     private JdbcTemplate jdbcTemplate;
     private PositionRowMapper positionRowMapper;
 
-    private static final String ALL_POSITIONS = "SELECT ticker, total_units, total_basis " +
+    public static final String ALL_POSITIONS = "SELECT ticker, total_units, total_basis " +
             "FROM position_rollups " +
             "ORDER BY ticker ASC";
 
-    public PositionRepositoryImpl(DataSource dataSource) {
-        this.dataSource = dataSource;
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
+    public PositionRepositoryImpl(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
         this.positionRowMapper = new PositionRowMapper();
     }
 

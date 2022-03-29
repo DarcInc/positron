@@ -8,7 +8,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@Setter
 public class Symbol {
     private String ticker;
     private SymbolType symbolType;

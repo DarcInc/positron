@@ -13,8 +13,7 @@ public class TradeRowMapper implements RowMapper<Trade> {
     public Trade mapRow(ResultSet rs, int rowNum) throws SQLException {
         Trade result = new Trade();
 
-        String id = rs.getString("id");
-        result.setId(new BigInteger(id));
+        result.setId(rs.getLong("id"));
         result.setTicker(rs.getString("ticker"));
 
         String transType = rs.getString("trans_type");
@@ -26,10 +25,7 @@ public class TradeRowMapper implements RowMapper<Trade> {
 
         result.setEventDate(rs.getDate("event_date"));
         result.setRecordedOn(rs.getDate("recorded_on"));
-
-        String units = rs.getString("units");
-        result.setUnits(new BigInteger(units));
-
+        result.setUnits(rs.getLong("units"));
         result.setPrice(rs.getBigDecimal("price"));
 
         return result;

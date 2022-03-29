@@ -11,7 +11,6 @@ import java.util.Optional;
 @Repository
 public class SymbolRepositoryImpl implements SymbolRepository {
 
-    private DataSource dataSource;
     private JdbcTemplate jdbcTemplate;
     private RowMapper<Symbol> rowMapper;
 
@@ -21,13 +20,9 @@ public class SymbolRepositoryImpl implements SymbolRepository {
     private static final String FIND_BY_TICKER_QUERY = "SELECT ticker, symbol_type, exchange FROM symbols " +
             "WHERE ticker = ?";
 
-    public SymbolRepositoryImpl(DataSource dataSource) {
-        this.dataSource = dataSource;
-        jdbcTemplate = new JdbcTemplate(dataSource);
-        rowMapper = ((rs, rowNum) -> new Symbol(
-                rs.getString("ticker"),
-                SymbolType.get(rs.getString("symbol_type")).orElseThrow(),
-                rs.getString("exchange")));
+    public SymbolRepositoryImpl(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+        rowMapper = new SymbolRowMapper();
     }
 
     @Override

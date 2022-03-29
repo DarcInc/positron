@@ -1,33 +1,16 @@
 package io.darkink.positron.data.positions;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import java.math.BigDecimal;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
 public class Position {
     private String ticker;
     private Long quantity;
     private BigDecimal basis;
-
-    public String getTicker() {
-        return ticker;
-    }
-
-    public void setTicker(String ticker) {
-        this.ticker = ticker;
-    }
-
-    public Long getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Long quantity) {
-        this.quantity = quantity;
-    }
-
-    public BigDecimal getBasis() {
-        return basis;
-    }
-
-    public void setBasis(BigDecimal basis) {
-        this.basis = basis;
-    }
 }
