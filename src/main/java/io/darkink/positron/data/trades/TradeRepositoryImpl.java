@@ -14,7 +14,7 @@ public class TradeRepositoryImpl implements TradeRepository {
     private JdbcTemplate jdbcTemplate;
     private TradeRowMapper tradeRowMapper;
 
-    private static final String ALL_TRADES = "SELECT id, ticker, trans_type, event_date, recorded_on, units, price " +
+    public static final String ALL_TRADES = "SELECT id, ticker, trans_type, event_date, recorded_on, units, price " +
             "FROM trades " +
             "ORDER BY ticker, event_date";
 

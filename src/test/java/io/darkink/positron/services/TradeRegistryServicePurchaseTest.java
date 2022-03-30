@@ -10,6 +10,7 @@ import io.darkink.positron.data.trades.TransType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -18,6 +19,7 @@ import java.math.BigInteger;
 import java.util.Date;
 import java.util.Optional;
 
+@SpringBootTest
 public class TradeRegistryServicePurchaseTest {
     private TradeRegistryService tradeRegistryService;
     @MockBean

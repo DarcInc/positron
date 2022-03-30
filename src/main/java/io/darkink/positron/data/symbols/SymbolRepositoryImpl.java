@@ -14,10 +14,10 @@ public class SymbolRepositoryImpl implements SymbolRepository {
     private JdbcTemplate jdbcTemplate;
     private RowMapper<Symbol> rowMapper;
 
-    private static final String ALL_SYMBOLS_QUERY = "SELECT ticker, symbol_type, exchange FROM symbols " +
+    public static final String ALL_SYMBOLS_QUERY = "SELECT ticker, symbol_type, exchange FROM symbols " +
             "ORDER BY symbol_type, ticker";
 
-    private static final String FIND_BY_TICKER_QUERY = "SELECT ticker, symbol_type, exchange FROM symbols " +
+    public static final String FIND_BY_TICKER_QUERY = "SELECT ticker, symbol_type, exchange FROM symbols " +
             "WHERE ticker = ?";
 
     public SymbolRepositoryImpl(JdbcTemplate jdbcTemplate) {
@@ -33,7 +33,7 @@ public class SymbolRepositoryImpl implements SymbolRepository {
 
     @Override
     public Optional<Symbol> findByticker(String ticker) {
-        List<Symbol> symbol = jdbcTemplate.query(FIND_BY_TICKER_QUERY, rowMapper);
+        List<Symbol> symbol = jdbcTemplate.query(FIND_BY_TICKER_QUERY, rowMapper, ticker);
         if (symbol.size() > 0) {
             return Optional.of(symbol.get(0));
         }
